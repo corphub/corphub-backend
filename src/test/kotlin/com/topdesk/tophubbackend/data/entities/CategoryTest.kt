@@ -1,3 +1,6 @@
+package com.topdesk.tophubbackend.data.entities
+
+import com.topdesk.tophubbackend.TophubBackendApplication
 import com.topdesk.tophubbackend.data.entities.Category
 import com.topdesk.tophubbackend.data.entities.CategoryRepository
 import org.assertj.core.api.Assertions.assertThat
@@ -8,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.junit.jupiter.SpringExtension
 
 @ExtendWith(SpringExtension::class)
-@SpringBootTest(classes = [com.topdesk.tophubbackend.TophubBackendApplication::class])
+@SpringBootTest(classes = [TophubBackendApplication::class])
 class HibernateDemoApplicationTests(@Autowired val repo: CategoryRepository) {
 
 
