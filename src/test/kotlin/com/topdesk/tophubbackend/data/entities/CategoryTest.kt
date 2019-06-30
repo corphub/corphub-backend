@@ -1,8 +1,6 @@
 package com.topdesk.tophubbackend.data.entities
 
 import com.topdesk.tophubbackend.TophubBackendApplication
-import com.topdesk.tophubbackend.data.entities.Category
-import com.topdesk.tophubbackend.data.entities.CategoryRepository
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
