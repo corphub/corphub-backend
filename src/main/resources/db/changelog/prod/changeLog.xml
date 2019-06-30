@@ -1,18 +1,34 @@
 <databaseChangeLog
-  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
-   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
-   http://www.liquibase.org/xml/ns/dbchangelog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
     <changeSet author="PeterA" id="createCategoryTable">
         <createTable tableName="category">
             <column name="id" type="int" autoIncrement="true">
-                <constraints primaryKey="true" primaryKeyName="table_categories_pk" />
+                <constraints primaryKey="true" primaryKeyName="table_category_pk" />
             </column>
             <column name="name" type="varchar(64)" />
+        </createTable>
+        <createTable tableName="entry">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="table_entry_pk" />
+            </column>
+            <column name="name" type="varchar(64)" />
+            <column name="target" type="varchar(4096)" />
+        </createTable>
+        <createTable tableName="category_entry_link">
+            <column name="category" type="int">
+                <constraints nullable="false"
+                             foreignKeyName="fk_category_entry_link__category"
+                             references="category(id)"/>
+            </column>
+            <column name="entry" type="int">
+                <constraints nullable="false"
+                             foreignKeyName="fk_category_entry_link__entry"
+                             references="entry(id)"/>
+            </column>
         </createTable>
     </changeSet>
 
