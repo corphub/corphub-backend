@@ -7,18 +7,21 @@
     <changeSet author="PeterA" id="createCategoryTable">
         <createTable tableName="category">
             <column name="id" type="int" autoIncrement="true">
-                <constraints primaryKey="true" primaryKeyName="table_category_pk" />
+                <constraints primaryKey="true" primaryKeyName="pk_category" />
             </column>
             <column name="name" type="varchar(64)" />
         </createTable>
         <createTable tableName="entry">
             <column name="id" type="int" autoIncrement="true">
-                <constraints primaryKey="true" primaryKeyName="table_entry_pk" />
+                <constraints primaryKey="true" primaryKeyName="pk_entry" />
             </column>
             <column name="name" type="varchar(64)" />
             <column name="target" type="varchar(4096)" />
         </createTable>
         <createTable tableName="category_entry_link">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_category_entry_link" />
+            </column>
             <column name="category" type="int">
                 <constraints nullable="false"
                              foreignKeyName="fk_category_entry_link__category"
