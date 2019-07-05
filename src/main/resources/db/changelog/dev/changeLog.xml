@@ -1,19 +1,27 @@
 <databaseChangeLog
-  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
-   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
-   http://www.liquibase.org/xml/ns/dbchangelog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
-    <changeSet author="PeterA" id="init-dev-db">
-        <loadData encoding="UTF-8"
-                  file="db/changelog/dev/categories.csv"
+    <changeSet author="PeterA" id="init-category-table">
+        <loadData file="db/changelog/dev/categories.csv"
                   quotchar="'"
-                  separator=","
                   tableName="category">
-            <column name="address" type="varchar(255)"/>
+        </loadData>
+    </changeSet>
+
+    <changeSet author="PeterA" id="init-entry-table">
+        <loadData file="db/changelog/dev/entries.csv"
+                  quotchar="'"
+                  tableName="entry">
+        </loadData>
+    </changeSet>
+
+    <changeSet author="PeterA" id="init-category-entry-link-table">
+        <loadData file="db/changelog/dev/category_entry_links.csv"
+                  quotchar="'"
+                  tableName="category_entry_link">
         </loadData>
     </changeSet>
 
