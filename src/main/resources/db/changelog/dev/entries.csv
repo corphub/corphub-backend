@@ -1,3 +1,4 @@
-id,name,target
-1,Connect,connect.topdesk.com
-2,gitlab,gitlab.topdesk.com
+id,title,target
+1,Connect,https://connect.topdesk.com/
+2,TOPwiki,https://wiki.topdesk.com/wiki/Main_Page/
+3,GitLab,https://git.topdesk.com/

@@ -9,8 +9,11 @@ data class Entry (
     val id: Int,
 
     @Column(nullable = false)
-    val name: String,
+    val title: String,
 
     @Column(nullable = false)
-    val target: String
+    val target: String,
+
+    @ManyToMany(mappedBy = "entries")
+    val categories: List<Category>? = null
 )
