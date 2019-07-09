@@ -13,8 +13,8 @@ data class Category(
 
         @JoinTable(
                 name = "category_entry_link",
-                joinColumns = [JoinColumn(name = "entry_id")],
-                inverseJoinColumns = [JoinColumn(name = "category_id")])
+                joinColumns = [JoinColumn(name = "category_id")],
+                inverseJoinColumns = [JoinColumn(name = "entry_id")])
         @ManyToMany(fetch=FetchType.EAGER)
         val entries: List<Entry>? = null
 )
