@@ -10,4 +10,5 @@ class CategoryQueryResolver(
         private val categoryRepository: CategoryRepository
 ) : GraphQLQueryResolver {
     fun getCategoryById(id: Int) = categoryRepository.findById(id)
+    fun getAllCategories() = categoryRepository.findAll()
 }
