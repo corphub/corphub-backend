@@ -10,7 +10,6 @@ before_script:
   - docker pull corphub/corphub-backend || true
 script:
 - docker build --cache-from corphub/corphub-backend --tag corphub/corphub-backend .
-- docker run corphub/corphub-backend
 after_script:
 - docker images
 before_deploy:
