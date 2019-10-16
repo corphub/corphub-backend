@@ -6,12 +6,14 @@ env:
   global:
   - REGISTRY_USER=pjotre86
   - secure: HP1WQx7TfmmKexX4smXillcGdu+OPqSfM8Jd4DUYaGfl26/K32YA3gC9OeWNqhWr7OGu/3ZBCFvTJUPpN+bJRKmTOE0DbBK/pTAANbDG5nVHn70YnvoE4GA0tNJxn/aDtllQ98FA4Nz8jaDDJOFY4jSqVls4OCWAlF+sfCI6cC/oGKhtCVpc5V03g1Mg2ihEymBXslTYrszH82XAnXQYvJte5cUyjV75khoNHTxTAe0/tHBBo1YfWejb5fHvgAaVca7kVGEvygynTueYm3WPTnoJPTWTSMJs0fJtAEg0A9HKXoABxAGM0hqmv3F5hx7xCe/xh5bxv/Uhrbu4oHPsMU9pu2obl+NFIJ5NmGcfCN4v74y+YBj0eo/NFxFcmAXl3q83sp5N8b7tmjUNur+SkXHTNsTreOgpg75WSw70a9/OztBDbMiuiJam/mR57HZRDDpEOdbpTwD7JlUugWRXVFTMeK7yKn+uOx7505GGg/Hy43KCA62wn1U/6ZEO53FtCS5mp/aKo1gH32c5Rww80Lk8jbhQgz+KLoKneI9HqwqQswNeRJ1sCpW0Di/xgrNSRmSbHQYdrIjuFB0lV5P1GfAB9L+1Cn+JrtNCQhMUiQIVJ11zLIpYGU4jBuaANNl0tu2j8yIjsx/d3CX+igNFf9HNarkcChoIYI6XXHnZ7X0=
+cache:
+  - yarn global add https://github.com/conveyal/maven-semantic-release.git#e5551beb4ec266bb520ae5ff155bc0d04acf8f05 semantic-release@15
 before_script:
   - nvm install lts/*
   - npx semantic-release --prepare @conveyal/maven-semantic-release --publish @semantic-release/github,@conveyal/maven-semantic-release --verify-conditions @semantic-release/github,@conveyal/maven-semantic-release --verify-release @conveyal/maven-semantic-release --skip-maven-deploy
   - docker pull corphub/corphub-backend || true
 script:
-#- docker build --cache-from corphub/corphub-backend --tag corphub/corphub-backend .
+- docker build --cache-from corphub/corphub-backend --tag corphub/corphub-backend .
 after_script:
 - docker images
 before_deploy:
