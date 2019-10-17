@@ -4,14 +4,14 @@ FROM openjdk:8-jdk-alpine
 # Add a volume pointing to /tmp
 VOLUME /tmp
 
-# Make port 8080 available to the world outside this container
+# Make port 8082 available to the world outside this container
 EXPOSE 8082:8082
 
 # The application's jar file
-ARG JAR_FILE=target/tophub-backend-0.0.1-SNAPSHOT.jar
+ARG POM_VERSION=target/tophub-backend-0.0.1-SNAPSHOT.jar
 
 # Add the application's jar to the container
-ADD ${JAR_FILE} tophub-backend-0.0.1-SNAPSHOT.jar
+ADD "target/tophub-backend-${POM_VERSION}.jar" "tophub-backend.jar"
 
 # Run the jar file
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/tophub-backend-1.1.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar", "tophub-backend.jar"]
