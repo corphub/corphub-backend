@@ -18,7 +18,6 @@ before_script:
   - nvm install lts/*
   #- npm i @conveyal/maven-semantic-release
   - yarn global add @conveyal/maven-semantic-release semantic-release@15
-  - mvn clean
   - npx semantic-release --prepare @conveyal/maven-semantic-release --publish @semantic-release/github,@conveyal/maven-semantic-release --verify-conditions @semantic-release/github,@conveyal/maven-semantic-release --verify-release @conveyal/maven-semantic-release --use-conveyal-workflow --dev-branch=dev --skip-maven-deploy
   - docker pull corphub/corphub-backend || true
 script:
@@ -27,8 +26,9 @@ after_script:
 - docker images
 before_deploy:
 - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
+- pip install docker-ci-deploy==0.2.0
 deploy:
   provider: script
-  script: docker push corphub/corphub-backend
+  script: docker-ci-deploy --tag latest --tag $(git describe --tags $(git rev-list --tags --max-count=1)) corphub/corphub-backend:latest
   on:
     branch: master

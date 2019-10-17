@@ -5,9 +5,7 @@ FROM openjdk:8-jdk-alpine
 EXPOSE 8082:8082
 
 # Add the application's jar to the container
-ADD target/tophub-backend-*.jar ./
-
-RUN mv tophub-backend-* tophub-backend.jar
+ADD tophub-backend.jar .
 
 # Run the jar file
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar", "tophub-backend.jar"]
