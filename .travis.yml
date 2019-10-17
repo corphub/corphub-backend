@@ -14,7 +14,7 @@ cache:
     - $HOME/.m2
     - $HOME/.yarn-cache
 before_install:
-  - pip install docker-ci-deploy
+  - pip install docker-ci-deploy --user
 install: ./mvnbuild.sh
 before_script:
   - nvm install lts/*
