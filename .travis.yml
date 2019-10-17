@@ -13,6 +13,7 @@ cache:
   directories:
     - $HOME/.m2
     - $HOME/.yarn-cache
+install: ./mvnbuild.sh
 before_script:
   - nvm install lts/*
   #- npm i @conveyal/maven-semantic-release
