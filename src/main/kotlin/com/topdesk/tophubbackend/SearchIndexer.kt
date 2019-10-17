@@ -15,7 +15,7 @@ constructor(factory: EntityManagerFactory) {
 
     init {
         if (factory.unwrap(SessionFactory::class.java) == null) {
-            throw NullPointerException("factory is not a hibernate factory")
+            throw NullPointerException("factory is not a hibernate factory.")
         }
         this.hibernateFactory = factory.unwrap(SessionFactory::class.java)
         val session = this.hibernateFactory.openSession()
