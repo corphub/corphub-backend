@@ -13,6 +13,8 @@ cache:
   directories:
     - $HOME/.m2
     - $HOME/.yarn-cache
+before_install:
+  - pip install docker-ci-deploy
 install: ./mvnbuild.sh
 before_script:
   - nvm install lts/*
@@ -26,7 +28,6 @@ after_script:
 - docker images
 before_deploy:
 - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
-- pip install docker-ci-deploy==0.2.0
 deploy:
   provider: script
   script: docker-ci-deploy --tag latest --tag $(git describe --tags $(git rev-list --tags --max-count=1)) corphub/corphub-backend:latest
