@@ -1,5 +1,5 @@
 #!/bin/sh
-BRANCH=`git branch | grep \* | cut -d ' ' -f2`
+BRANCH=$1
 echo branch: ${BRANCH}
 if [[ "$BRANCH" == "master" ]]; then
     latesttag=$(git describe --tags `git rev-list --tags --max-count=1`)
