@@ -18,6 +18,7 @@ before_script:
   - yarn global add @conveyal/maven-semantic-release semantic-release@15
   - npx semantic-release --prepare @conveyal/maven-semantic-release --publish @semantic-release/github,@conveyal/maven-semantic-release --verify-conditions @semantic-release/github,@conveyal/maven-semantic-release --verify-release @conveyal/maven-semantic-release --use-conveyal-workflow --dev-branch=dev --skip-maven-deploy
   - docker pull corphub/corphub-backend || true
+script: true
 before_deploy:
 - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
 deploy:
