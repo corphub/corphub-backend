@@ -13,20 +13,15 @@ cache:
   directories:
     - $HOME/.m2
     - $HOME/.yarn-cache
-before_install:
-  - pip install docker-ci-deploy --user
 before_script:
   - nvm install lts/*
-  #- npm i @conveyal/maven-semantic-release
   - yarn global add @conveyal/maven-semantic-release semantic-release@15
   - npx semantic-release --prepare @conveyal/maven-semantic-release --publish @semantic-release/github,@conveyal/maven-semantic-release --verify-conditions @semantic-release/github,@conveyal/maven-semantic-release --verify-release @conveyal/maven-semantic-release --use-conveyal-workflow --dev-branch=dev --skip-maven-deploy
   - docker pull corphub/corphub-backend || true
-script:
-  docker build --cache-from corphub/corphub-backend --build-arg POM_VERSION=`git describe --tags $(git rev-list --tags --max-count=1) | cut -c2-` -t corphub/corphub-backend .
 before_deploy:
 - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
 deploy:
   provider: script
-  script: docker-ci-deploy --tag latest --tag $(git describe --tags $(git rev-list --tags --max-count=1)) corphub/corphub-backend
+  script: bash ./deploy.sh
   on:
     branch: master
