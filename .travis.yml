@@ -16,7 +16,7 @@ cache:
 before_script:
   - nvm install lts/*
   - yarn add @conveyal/maven-semantic-release @semantic-release/changelog semantic-release@15 @semantic-release/exec
-  - npx semantic-release --prepare @conveyal/maven-semantic-release --publish @semantic-release/github,@conveyal/maven-semantic-release --verify-conditions @semantic-release/github,@conveyal/maven-semantic-release --verify-release @conveyal/maven-semantic-release --use-conveyal-workflow --dev-branch=dev --skip-maven-deploy --prepare @semantic-release/changelog--prepareCmd @semantic-release/exec
+  - npx semantic-release --prepare @conveyal/maven-semantic-release --publish @semantic-release/github,@conveyal/maven-semantic-release --verify-conditions @semantic-release/github,@conveyal/maven-semantic-release --verify-release @conveyal/maven-semantic-release --use-conveyal-workflow --dev-branch=dev --skip-maven-deploy --prepare @semantic-release/changelog --prepareCmd @semantic-release/exec
 script: true
 before_deploy:
   - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
