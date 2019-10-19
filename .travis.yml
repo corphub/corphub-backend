@@ -15,7 +15,7 @@ cache:
     - $HOME/.yarn-cache
 after_success:
   - nvm install lts/*
-  - yarn add @conveyal/maven-semantic-release @semantic-release/changelog @semantic-release/exec semantic-release@15
+  - yarn add @conveyal/maven-semantic-release @semantic-release/changelog @semantic-release/exec @semantic-release/git semantic-release@15
   - npx semantic-release --prepare @semantic-release/changelog,@semantic-release/exec --publish @semantic-release/github,@conveyal/maven-semantic-release --verify-conditions @semantic-release/github,@conveyal/maven-semantic-release --skip-maven-deploy
   - git reset --hard HEAD
   - git add CHANGELOG.md
