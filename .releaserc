@@ -3,7 +3,7 @@
                                 "@semantic-release/commit-analyzer",
                                 "@semantic-release/release-notes-generator",
                                 ["@semantic-release/exec", {
-                                  "prepareCmd": "echo HUHUHU"
+                                  "prepareCmd": "./addChangelog.sh"
                                 }],
                               ]
                      }
