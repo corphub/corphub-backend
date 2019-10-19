@@ -14,6 +14,7 @@ major_version=${versions[0]}
 echo found feature version: ${feature_version}
 echo found major version: ${major_version}
 
+docker pull corphub/corphub-backend || true
 if [[ "$BRANCH" == "master" ]]; then
     echo building release version
     docker build --cache-from corphub/corphub-backend --build-arg POM_VERSION=${full_version} -t corphub/corphub-backend:${full_version} -t corphub/corphub-backend:${feature_version} -t corphub/corphub-backend:${major_version} -t corphub/corphub-backend:latest .
