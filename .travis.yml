@@ -21,10 +21,6 @@ before_script:
 script: true
 before_deploy:
   - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
-  branches:
-    only:
-      - master
-      - dev
 deploy:
   skip_cleanup: true
   provider: script
