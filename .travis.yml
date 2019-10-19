@@ -18,6 +18,7 @@ before_script:
   - yarn add @conveyal/maven-semantic-release @semantic-release/changelog @semantic-release/exec @semantic-release/git semantic-release@15
 after_success:
   - npx semantic-release --prepare @semantic-release/changelog,@conveyal/maven-semantic-release --publish @semantic-release/github,@conveyal/maven-semantic-release --verify-conditions @semantic-release/github,@conveyal/maven-semantic-release --verify-release @conveyal/maven-semantic-release --use-conveyal-workflow --dev-branch=dev --skip-maven-deploy
+  - mvn dependency:purge-local-repository -DmanualInclude="com.topdesk:tophub-backend"
 script: true
 before_deploy:
   - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
