@@ -8,7 +8,7 @@ if [[ "$BRANCH" == "master" ]]; then
 fi
 full_version=` mvn org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate -Dexpression=project.version | sed -n -e '/^\[.*\]/ !{ /^[0-9]/ { p; q } }'`
 echo found version: ${full_version}
-IFS='.' read -r -a versions <<< "full_version"
+IFS='.' read -r -a versions <<< "$full_version"
 feature_version=${versions[0]}.${versions[1]}
 major_version=${versions[0]}
 echo found feature version: ${feature_version}
