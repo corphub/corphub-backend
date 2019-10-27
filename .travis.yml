@@ -18,7 +18,7 @@ before_script:
   - yarn global add @conveyal/maven-semantic-release semantic-release@15
   - rm -rf /home/travis/.m2/repository/com/topdesk/
 after_success:
-  - npx semantic-release --prepare @conveyal/maven-semantic-release --publish @semantic-release/github,@conveyal/maven-semantic-release --verify-conditions @semantic-release/github,@conveyal/maven-semantic-release --verify-release @conveyal/maven-semantic-release --use-conveyal-workflow --dev-branch=dev --skip-maven-deploy
+  - npx semantic-release --prepare @semantic-release/changelog,@conveyal/maven-semantic-release --publish @semantic-release/github,@conveyal/maven-semantic-release --verify-conditions @semantic-release/github,@conveyal/maven-semantic-release --verify-release @conveyal/maven-semantic-release --use-conveyal-workflow --dev-branch=dev --skip-maven-deploy --additionalFilesToCommit CHANGELOG.md
 script: true
 before_deploy:
   - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
