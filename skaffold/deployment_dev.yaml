@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: corphub-backend-deployment-dev
+  labels:
+    app: corphub-backend-app-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: corphub-backend-app-dev
+  template:
+    metadata:
+      labels:
+        app: corphub-backend-app-dev
+    spec:
+      containers:
+        - name: corphub-backend-app-dev
+          image: corphub/corphub-backend
+          ports:
+            - containerPort: 8082
+            #- containerPort: 5006
+            #  name: jdwp
+          env:
+            - name: spring.jpa.properties.hibernate.search.default.elasticsearch.host
+              value: "elasticsearch-service:9200"
+            - name: spring.profiles.active
+              value: "dev"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: corphub-backend-service-dev
+spec:
+  selector:
+    app: corphub-backend-app-dev
+  ports:
+    - port: 8082
+      targetPort: 8082
+      nodePort: 31008
+      name: graphql
+    - port: 5005
+      targetPort: 5005
+      nodePort: 31009
+      name: jdwp
+  type: LoadBalancer
